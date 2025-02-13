@@ -37,7 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "Te quiero mucho mi niña. 💖",
       "Me encantas. 🌟",
       "Sos mi persona favorita en todo el mundo. 🌹",
-      "Ya quiero hacer mil cosas con vos. 💕"
+      "Ya quiero hacer mil cosas con vos. 💕",
+      "PESADAAAA",
+      "ME HICISTE UN AMARRE VERDAD????",
+      "Que ricas piernas mi amooor 💋",
+      "rasguñame toda la espalda",
+      "tonotaaaa",
     ];
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     alert(randomMessage);
