@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz 14 de Febrero</title>
+  <link rel="stylesheet" href="IVI.css">
+</head>
+<body>
+  <!-- Música de fondo con autoplay y loop, pero no se reproduce automáticamente -->
+  <audio id="background-music" loop>
+    <source src="assets/Chava_Flores_Tomando_Te.mp3" type="audio/mp3">
+    <source src="assets/Chava_Flores_Tomando_Te.ogg" type="audio/ogg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <div class="container">
+    <h1>Feliz Día de San Valentín 💖</h1>
+    <p>Te quiero con toda mi alma, IVIVI. Feliz San Valentín 💕</p>
+    
+    <!-- Botón para activar la música -->
+    <button id="music-button" class="music-button">Reproducir música 🎶</button>
+
+    <!-- Botón de mensaje sorpresa -->
+    <button id="surpriseButton" class="surprise-button">Sorpresa 💌</button>
+
+    <div class="animation-area">
+      <!-- Corazones, estrellas, flores y las imágenes -->
+      <span><img src="heart.png" alt="Heart" class="floating-image"></span>
+      <span><img src="flower.png" alt="Flower" class="floating-image"></span>
+      <span><img src="star.png" alt="Star" class="floating-image"></span>
+      <span class="heart">❤️</span>
+      <span class="flower">🌸</span>
+      <span class="star">✨</span>
+    </div>
+  </div>
+
+  <script src="IVI.js"></script>
+</body>
+</html>
