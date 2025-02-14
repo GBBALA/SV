@@ -5,11 +5,28 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, #4e1f70, #6a2d91, #9b4d98, #ae7eb2, #d29abf);
   color: white;
   text-align: center;
   overflow: hidden;
-  animation: colorChange 10s infinite;
+  animation: colorChange 15s infinite;
+}
+
+@keyframes colorChange {
+  0% { background: #4e1f70; }
+  25% { background: #6a2d91; }
+  50% { background: #9b4d98; }
+  75% { background: #ae7eb2; }
+  100% { background: #d29abf; }
+}
+
+@keyframes colorChange {
+  0% { background: #ff9a9e; }
+  20% { background: #fad0c4; }
+  40% { background: #ffdde1; }
+  60% { background: #fccbcb; }
+  80% { background: #fff1eb; }
+  100% { background: #ff9a9e; }
 }
 
 .container {
