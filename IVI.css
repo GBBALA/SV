@@ -1,46 +1,167 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(135deg, #4e1f70, #6a2d91, #9b4d98, #ae7eb2, #d29abf);
-  color: white;
+  color: #fff;
   text-align: center;
+  overflow-x: hidden;
+  padding-bottom: 80px; /* Espacio para los botones fijos */
+}
+
+h2 {
+  font-size: 1.8em; /* Reducir un poco el tamaño del título */
+  margin: 20px 0 15px; /* Reducir márgenes */
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+}
+
+.dedicatorias {
+  width: 95%; /* Ocupar más ancho en pantallas pequeñas */
+  max-width: 400px; /* Reducir el ancho máximo */
+  margin: 20px auto; /* Reducir márgenes */
+  padding: 15px; /* Reducir padding */
+  background: rgba(255, 255, 255, 0.15); /* Ligeramente más opaco */
+  border-radius: 10px; /* Reducir radio del borde */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reducir sombra */
+}
+
+.dedicatorias h2 {
+  font-size: 1.5em; /* Reducir tamaño del título de la sección */
+  margin-top: 0;
+  color: #fff;
+}
+
+.carta {
+  background: rgba(255, 255, 255, 0.25); /* Ligeramente más opaco */
+  color: #fff;
+  border-radius: 8px; /* Reducir radio del borde */
+  padding: 10px; /* Reducir padding */
+  margin-bottom: 10px; /* Reducir margen */
+  font-size: 0.9em; /* Reducir tamaño de la fuente */
+  line-height: 1.4; /* Reducir espaciado entre líneas */
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+}
+
+.carrusel {
+  width: 95%; /* Ocupar más ancho */
+  max-width: 350px; /* Reducir ancho máximo */
+  margin: 20px auto; /* Reducir márgenes */
   overflow: hidden;
-  animation: colorChange 15s infinite;
+  border-radius: 10px; /* Reducir radio del borde */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reducir sombra */
 }
 
-@keyframes colorChange {
-  0% { background: #4e1f70; }
-  25% { background: #6a2d91; }
-  50% { background: #9b4d98; }
-  75% { background: #ae7eb2; }
-  100% { background: #d29abf; }
+.carousel-container {
+  overflow: hidden;
 }
 
-@keyframes colorChange {
-  0% { background: #ff9a9e; }
-  20% { background: #fad0c4; }
-  40% { background: #ffdde1; }
-  60% { background: #fccbcb; }
-  80% { background: #fff1eb; }
-  100% { background: #ff9a9e; }
+.slides {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
 }
 
-.container {
-  padding: 20px;
+.slides img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain; /* Mantener */
+  border-radius: 10px; /* Reducir radio del borde */
 }
 
-.container h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+.carrusel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5); /* Ligeramente más transparente */
+  color: #fff;
+  border: none;
+  padding: 8px 12px; /* Reducir padding */
+  font-size: 1.2em; /* Reducir tamaño de la fuente */
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px; /* Reducir radio del borde */
 }
 
-.container p {
-  font-size: 1.2rem;
+.carrusel .prev {
+  left: 5px; /* Ajustar posición */
+}
+
+.carrusel .next {
+  right: 5px; /* Ajustar posición */
+}
+
+.cumplemes {
+  width: 95%; /* Ocupar más ancho */
+  max-width: 300px; /* Reducir ancho máximo */
+  margin: 30px auto; /* Reducir márgenes */
+  padding: 20px; /* Reducir padding */
+  background: linear-gradient(135deg, #fdd835, #ffeb3b, #fdd835);
+  border-radius: 10px; /* Reducir radio del borde */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+  color: #333;
+}
+
+.cumplemes h2 {
+  font-size: 1.6em; /* Reducir tamaño del título */
+  margin-top: 0;
+  color: #333;
+  text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.5); /* Reducir sombra */
+}
+
+#timer.timer-box {
+  font-size: 2em; /* Reducir tamaño del contador */
   font-weight: bold;
+  padding: 10px 15px; /* Reducir padding */
+  background: #fff;
+  color: #9b4d98;
+  border-radius: 8px; /* Reducir radio del borde */
+  margin-bottom: 10px; /* Reducir margen */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reducir sombra */
+}
+
+.cumplemes p.mensaje-final {
+  font-size: 1em; /* Reducir tamaño de la fuente */
+  font-weight: bold;
+  color: #555;
+}
+
+.fixed-buttons {
+  position: fixed;
+  bottom: 10px; /* Reducir distancia del borde inferior */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Reducir espacio entre botones */
+  z-index: 100;
+}
+
+.music-button, .surprise-button {
+  background-color: #9b4d98;
+  color: white;
+  padding: 10px 20px; /* Reducir padding */
+  border: none;
+  border-radius: 20px; /* Reducir radio del borde */
+  font-size: 0.9em; /* Reducir tamaño de la fuente */
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Reducir sombra */
+  transition: transform 0.2s ease-in-out;
+}
+
+.music-button:hover, .surprise-button:hover {
+  transform: translateX(-50%) scale(1.02); /* Reducir escala al hacer hover */
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  top: 0;
+  left: 0;
 }
 
 .animation-area {
@@ -55,138 +176,53 @@ body {
 
 .animation-area span {
   position: absolute;
-  animation: float 7s infinite linear;
-  font-size: 2rem;
-  opacity: 0.8;
-}
-
-.floating-image {
-  width: 50px;
-  height: 50px;
-  animation: float 6s infinite linear;
-}
-
-.star {
-  color: #ffd700;
-}
-
-.heart {
-  color: #ff4d6d;
-}
-
-.flower {
-  color: #ff69b4;
+  animation: float 5s infinite linear, color-change 3s infinite alternate;
+  font-size: 1.5rem; /* Reducir tamaño de los emojis */
+  opacity: 0.7; /* Ligeramente más transparente */
 }
 
 @keyframes float {
   0% {
-    transform: translateY(100vh) scale(0.8);
-    opacity: 0.6;
+    transform: translateY(100vh) scale(0.5) rotate(0deg);
+    opacity: 0.3;
   }
   50% {
-    transform: translateY(50vh) scale(1);
-    opacity: 1;
+    transform: translateY(50vh) scale(1.1) rotate(180deg);
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(-10vh) scale(0.8);
-    opacity: 0.6;
+    transform: translateY(-20vh) scale(0.5) rotate(360deg);
+    opacity: 0.3;
   }
 }
 
-@media (max-width: 768px) {
-  .container h1 {
-    font-size: 1.8rem;
-  }
-
-  .container p {
-    font-size: 1rem;
-  }
-
-  .animation-area span {
-    font-size: 1.5rem;
-  }
-
-  .floating-image {
-    width: 30px;
-    height: 30px;
-  }
+@keyframes color-change {
+  0% { color: #ff6ec4; }
+  50% { color: #ff4f81; }
+  100% { color: #ff7851; }
 }
 
-.container p {
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Ajustes específicos para pantallas muy pequeñas (ej., 320px de ancho) */
+@media (max-width: 320px) {
+  h2 {
+    font-size: 1.6em;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .dedicatorias {
+    max-width: 95%;
   }
-}
 
-/* Estilo para el botón de música */
-.music-button {
-  background-color: #ff69b4;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 15px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+  .carrusel {
+    max-width: 95%;
   }
-  50% {
-    transform: translateY(-5px);
+
+  #timer.timer-box {
+    font-size: 1.8em;
   }
-}
 
-/* Estilo para el botón de sorpresa */
-.surprise-button {
-  background-color: #ff69b4;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  animation: bounce 1.5s infinite;
-}
-
-@keyframes colorChange {
-  0% { background: #ff9a9e; }
-  25% { background: #fad0c4; }
-  50% { background: #ffdde1; }
-  75% { background: #fccbcb; }
-  100% { background: #ff9a9e; }
-}
-
-.big-heart {
-  font-size: 5rem;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
+  .music-button, .surprise-button {
+    padding: 8px 16px;
+    font-size: 0.8em;
+    border-radius: 15px;
   }
 }

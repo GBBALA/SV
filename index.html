@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz 14 de Febrero</title>
-  <link rel="stylesheet" href="IVI.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>te amo</title>
+  <link rel="stylesheet" href="IVI.css" />
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <!-- Música de fondo con autoplay y loop, pero no se reproduce automáticamente -->
+  <div id="particles-js"></div>
   <audio id="background-music" loop>
-    <source src="Chava Flores - Tomando Té (Letra) - black ghosting.mp3" type="audio/mp3">
-    <source src="Chava Flores - Tomando Té (Letra) - black ghosting.mp3" type="audio/ogg">
+    <source src="BTS - EPIPHANY [Sub. Español] - Loveless Club.mp3" type="audio/mp3" />
     Tu navegador no soporta el elemento de audio.
   </audio>
 
-  <div class="container">
-    <h1>Feliz San Valentín 💖</h1>
-    <p>Te quiero con toda mi alma, IVIVI. 💕</p>
-    
-    <!-- Botón para activar la música -->
-    <button id="music-button" class="music-button">🎶</button>
-
-    <!-- Botón de mensaje sorpresa -->
-    <button id="surpriseButton" class="surprise-button">💌</button>
-
-    <div class="animation-area">
-      <!-- Corazones, estrellas, flores y las imágenes -->
-      <span><img src="heart.png" alt="Heart" class="floating-image"></span>
-      <span><img src="flower.png" alt="Flower" class="floating-image"></span>
-      <span><img src="star.png" alt="Star" class="floating-image"></span>
-      <span class="heart">❤️</span>
-      <span class="flower">🌸</span>
-      <span class="star">✨</span>
+  <section class="dedicatorias">
+    <h2>Te amo estrellita ✨</h2>
+    <div class="carta">
+      <p>“desde que llegaste a mi vida la hiciste mucho mas bonita y feliz, me ayudaste a salir adelante con temores que tenia y me devolviste la esperanza en el amor
+        te amo ivi”</p>
     </div>
+    <div class="carta">
+      <p>“ahora te lo digo siempre pero quiero que sepas que (aunque ya lo sabes) para mi el te amo, es una palabra muy fuerte, y cada que te lo digo, sale de mi alma.”</p>
+    </div>
+    </section>
+
+  <section class="carrusel">
+    <h2>💖</h2>
+    <div class="carousel-container">
+      <div class="slides">
+        <img src="img/uno.webp" alt="uno">
+        <img src="img/dos.webp" alt="dos">
+        <img src="img/tres.webp" alt="tres">
+        <img src="img/cuatro.webp" alt="cuatro">
+        <img src="img/cinco.jpg" alt="cinco">
+        <img src="img/seis.jpg" alt="seis">
+        <img src="img/siete.jpg" alt="siete">
+        <img src="img/ocho.jpg" alt="ocho">
+        <img src="img/nueve.jpg" alt="nueve">
+        <img src="img/diez.png" alt="diez">
+        <img src="img/once.jpg" alt="once">
+        <img src="img/doce.png" alt="doce">
+        <img src="img/trece.webp" alt="trece">
+      </div>
+    </div>
+    <button class="prev">◀</button>
+    <button class="next">▶</button>
+  </section>
+
+  <section class="cumplemes">
+    <h2>cumplemes 🎉</h2>
+    <div id="timer" class="timer-box">Cargando...</div>
+    <p class="mensaje-final">! ❤️</p>
+  </section>
+
+  <div class="fixed-buttons">
+    <button id="music-button" class="music-button">🎶</button>
+    <button id="surpriseButton" class="surprise-button">💌</button>
   </div>
+
+  <div class="animation-area">
+    </div>
 
   <script src="IVI.js"></script>
 </body>
