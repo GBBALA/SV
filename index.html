@@ -1,67 +1,744 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>te amo</title>
-  <link rel="stylesheet" href="IVI.css" />
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <title>Te amo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(-45deg, #8b5cf6, #a855f7, #9333ea, #7c3aed, #6d28d9, #5b21b6);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efectos de fondo con corazones flotantes */
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 20px;
+      animation: floatUp 6s ease-in infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg);
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(360deg);
+      }
+    }
+
+    /* Partículas brillantes */
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Títulos mejorados */
+    h2 {
+      font-size: 2.5em;
+      margin: 30px 0 20px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
+      to { text-shadow: 0 0 30px rgba(196, 164, 249, 1); }
+    }
+
+    /* Dedicatorias con efecto glassmorphism */
+    .dedicatorias {
+      width: 95%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .carta {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 182, 224, 0.1));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carta::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #8b5cf6, #a855f7, #c084fc, #ddd6fe);
+      border-radius: 20px;
+      z-index: -1;
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .carta:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Carrusel mejorado */
+.carrusel {
+  width: 95%;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.carousel-container {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slides img {
+  width: 100%;
+  height: auto; /* Cambiado de '400px' a 'auto' */
+  flex-shrink: 0;
+  object-fit: contain; /* Cambiado de 'cover' a 'contain' */
+  filter: brightness(1.1) saturate(1.2);
+  transition: all 0.3s ease;
+}
+
+.carrusel button {
+  /* Quita o comenta este bloque para eliminar las flechas visualmente */
+  display: none;
+}
+    /* Cumplemes mejorado */
+    .cumplemes {
+      width: 95%;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 30px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed, #6d28d9);
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
+      color: #fff;
+      animation: pulse 3s infinite alternate;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4); }
+      to { transform: scale(1.05); box-shadow: 0 25px 80px rgba(139, 92, 246, 0.6); }
+    }
+
+    #timer.timer-box {
+      font-size: 2.5em;
+      font-weight: bold;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #7c3aed;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-shadow: none;
+    }
+
+    /* Canciones con diseño de tarjetas premium */
+    .canciones {
+      margin: 50px auto;
+      padding: 40px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      width: 95%;
+      max-width: 1000px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .canciones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .cancion-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 107, 157, 0.1));
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cancion-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .cancion-card:hover::before {
+      left: 100%;
+    }
+
+    .cancion-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(255,107,157,0.4);
+    }
+
+    .cancion-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.4em;
+      color: #ffb6e0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .cancion-card audio {
+      width: 100%;
+      outline: none;
+      border-radius: 15px;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+    }
+
+    /* Quiz con diseño moderno */
+    .juegos {
+      width: 95%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: left;
+    }
+
+    .pregunta {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .pregunta:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateX(5px);
+    }
+
+    .pregunta.incorrecta {
+      background: rgba(255, 0, 0, 0.3);
+      animation: shake 0.5s;
+    }
+
+    .quiz-btn {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+    }
+
+    .quiz-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+    }
+
+    .resultado-quiz {
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      text-align: center;
+      font-size: 1.2em;
+      animation: fadeIn 1s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h2 { font-size: 2em; }
+      .carta { font-size: 1em; padding: 15px; }
+      .canciones-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <audio id="background-music" loop>
-    <source src="BTS - EPIPHANY [Sub. Español] - Loveless Club.mp3" type="audio/mp3" />
-    Tu navegador no soporta el elemento de audio.
-  </audio>
+  <!-- Contenedor de corazones flotantes -->
+  <div class="hearts-container" id="hearts-container"></div>
+  
+  <!-- Contenedor de partículas brillantes -->
+  <div class="sparkles" id="sparkles"></div>
 
   <section class="dedicatorias">
     <h2>Te amo estrellita ✨</h2>
     <div class="carta">
-      <p>“desde que llegaste a mi vida la hiciste mucho mas bonita y feliz, me ayudaste a salir adelante con temores que tenia y me devolviste la esperanza en el amor
-        te amo ivi”</p>
+      <p>"Desde que llegaste a mi vida la hiciste mucho más bonita y feliz, me ayudaste a salir adelante con temores que tenía y me devolviste la esperanza en el amor. Te amo Ivi 💖"</p>
     </div>
     <div class="carta">
-      <p>“ahora te lo digo siempre pero quiero que sepas que (aunque ya lo sabes) para mi el te amo, es una palabra muy fuerte, y cada que te lo digo, sale de mi alma.”</p>
+      <p>"Ahora te lo digo siempre, pero quiero que sepas que (aunque ya lo sabes) para mí el te amo es una palabra muy fuerte, y cada que te lo digo, sale de mi alma."</p>
     </div>
-    </section>
+    <div class="carta">
+      <p>"Te amo tanto amor, quiero tener muchos meses muchos años con vos y que ambos avanzemos en la vida, quiero darte todo mi ser, quiero que vos me des el tuyo, quiero aprender a amarte mejor, quiero poder tenerte en todos los momentos mas lindos de mi vida, quiero poder pasar las cosas mas simples y las cosas mas locas, siempre con vos a mi lado."</p>
+    </div>
+  </section>
 
   <section class="carrusel">
-    <h2>💖</h2>
-    <div class="carousel-container">
-      <div class="slides">
-        <img src="img/uno.webp" alt="uno">
-        <img src="img/dos.webp" alt="dos">
-        <img src="img/tres.webp" alt="tres">
-        <img src="img/cuatro.webp" alt="cuatro">
-        <img src="img/cinco.jpg" alt="cinco">
-        <img src="img/seis.jpg" alt="seis">
-        <img src="img/siete.jpg" alt="siete">
-        <img src="img/ocho.jpg" alt="ocho">
-        <img src="img/nueve.jpg" alt="nueve">
-        <img src="img/diez.png" alt="diez">
-        <img src="img/once.jpg" alt="once">
-        <img src="img/doce.png" alt="doce">
-        <img src="img/trece.webp" alt="trece">
+  <h2>💖</h2>
+  <div class="carousel-container">
+    <div class="slides" id="carousel-slide">
+      <img src="img/uno.webp" alt="uno">
+      <img src="img/dos.webp" alt="dos">
+      <img src="img/tres.webp" alt="tres">
+      <img src="img/cuatro.webp" alt="cuatro">
+      <img src="img/cinco.jpg" alt="cinco">
+      <img src="img/seis.jpg" alt="seis">
+      <img src="img/siete.jpg" alt="siete">
+      <img src="img/ocho.jpg" alt="ocho">
+      <img src="img/nueve.jpg" alt="nueve">
+      <img src="img/diez.png" alt="diez">
+      <img src="img/once.jpg" alt="once">
+      <img src="img/trece.webp" alt="trece">
+      <img src="img/1.jpg" alt="1">
+      <img src="img/2.webp" alt="2">
+      <img src="img/3.jpg" alt="3">
+      <img src="img/4.jpg" alt="4">
+      <img src="img/5.jpg" alt="5">
+      <img src="img/6.jpg" alt="6">
+
+
+    </div>
+  </div>
+</section>
+
+  <section class="canciones">
+    <h2>🎶 Nuestras Canciones 🎶</h2>
+    <div class="canciones-grid">
+      <div class="cancion-card">
+        <h3>BONSAI</h3>
+        <audio class="song-audio" controls>
+          <source src="music/BONSAI (Videolyric) - Alan Sutton y las criaturitas de la ansiedad.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="cancion-card">
+        <h3>EL ÚNICO</h3>
+        <audio class="song-audio" controls>
+          <source src="music/CA7RIEL & Paco Amoroso - EL ÚNICO (Official Loop).mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="cancion-card">
+        <h3>Beso</h3>
+        <audio class="song-audio" controls>
+          <source src="music/Jósean Log - Beso (Lyric Video).mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="cancion-card">
+        <h3>Mi Deseo</h3>
+        <audio class="song-audio" controls>
+          <source src="music/Paco Amoroso - Mi Deseo (Audio).mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="cancion-card">
+        <h3>Rock With You</h3>
+        <audio class="song-audio" controls>
+          <source src="music/Rock With You.mp3" type="audio/mpeg">
+        </audio>
       </div>
     </div>
-    <button class="prev">◀</button>
-    <button class="next">▶</button>
   </section>
 
-  <section class="cumplemes">
-    <h2>cumplemes 🎉</h2>
-    <div id="timer" class="timer-box">Cargando...</div>
-    <p class="mensaje-final">! ❤️</p>
+  <section class="juegos">
+    <h2>Qué tanto me conoces 💌</h2>
+    <form id="quizForm">
+      <div class="pregunta">
+        <p>1. ¿Cuándo empezamos a salir? 💖</p>
+        <label><input type="radio" name="q1" value="a"> El 16 de enero</label><br>
+        <label><input type="radio" name="q1" value="b"> El 16 de diciembre</label><br>
+        <label><input type="radio" name="q1" value="c"> No sé</label><br>
+        <label><input type="radio" name="q1" value="d"> El 16 de abril</label>
+      </div>
+
+      <div class="pregunta">
+        <p>2. ¿Cuál es mi cantante favorito? 🎶</p>
+        <label><input type="radio" name="q2" value="a"> Gustavo Cerati</label><br>
+        <label><input type="radio" name="q2" value="b"> Charly García</label><br>
+        <label><input type="radio" name="q2" value="c"> L-Gante</label>
+      </div>
+      
+      <div class="pregunta">
+        <p>3. ¿Cuál es mi segundo nombre? 📝</p>
+        <label><input type="radio" name="q3" value="a"> Eduardo</label><br>
+        <label><input type="radio" name="q3" value="b"> Emilio</label><br>
+        <label><input type="radio" name="q3" value="c"> Edgardo</label><br>
+        <label><input type="radio" name="q3" value="d"> Manuel</label>
+      </div>
+
+      <div class="pregunta">
+        <p>4. ¿Cómo se llama mi gata negra? 🐾</p>
+        <label><input type="radio" name="q4" value="a"> Sami</label><br>
+        <label><input type="radio" name="q4" value="b"> Nami</label><br>
+        <label><input type="radio" name="q4" value="c"> Tami</label><br>
+        <label><input type="radio" name="q4" value="d"> Alfonsina</label>
+      </div>
+      
+      <div class="pregunta">
+        <p>6. ¿Cuál es mi superhéroe favorito?</p>
+        <label><input type="radio" name="q6" value="a"> Iron Man</label><br>
+        <label><input type="radio" name="q6" value="b"> Dr. Manhattan</label><br>
+        <label><input type="radio" name="q6" value="c"> Dr. Strange</label><br>
+        <label><input type="radio" name="q6" value="d"> Deadpool</label>
+      </div>
+
+      <div class="pregunta">
+        <p>7. ¿Cuál es mi juego favorito?</p>
+        <label><input type="radio" name="q7" value="a"> Terraria</label><br>
+        <label><input type="radio" name="q7" value="b"> Hades</label><br>
+        <label><input type="radio" name="q7" value="c"> League Of Legends</label><br>
+        <label><input type="radio" name="q7" value="d"> Watch Dogs</label><br>
+        <label><input type="radio" name="q7" value="e"> Assasins Creed 2</label>
+      </div>
+
+      <div class="pregunta">
+        <p>8. ¿Cuál es mi fisicoculturista favorito?</p>
+        <label><input type="radio" name="q8" value="a"> Mike Mentzer</label><br>
+        <label><input type="radio" name="q8" value="b"> Ramon Dino</label><br>
+        <label><input type="radio" name="q8" value="c"> Cris Bumstead</label><br>
+        <label><input type="radio" name="q8" value="d"> Ronie Coleman</label>
+      </div>
+
+      <div class="pregunta">
+        <p>9. ¿Qué me gusta más de vos?</p>
+        <label><input type="radio" name="q9" value="a"> Tu cuerpo</label><br>
+        <label><input type="radio" name="q9" value="b"> Tu personalidad</label><br>
+        <label><input type="radio" name="q9" value="c"> Tu humor</label><br>
+        <label><input type="radio" name="q9" value="d"> Tu amor</label><br>
+        <label><input type="radio" name="q9" value="e"> Todas son correctas</label>
+      </div>
+
+      <div class="pregunta">
+        <p>10. ¿Qué es lo que más me gusta hacer con vos?</p>
+        <label><input type="radio" name="q10" value="a"> Comer</label><br>
+        <label><input type="radio" name="q10" value="b"> Dormir</label><br>
+        <label><input type="radio" name="q10" value="c"> Coger 🫦</label><br>
+        <label><input type="radio" name="q10" value="d"> Caminar</label><br>
+        <label><input type="radio" name="q10" value="e"> Abrazarnos</label><br>
+        <label><input type="radio" name="q10" value="f"> Todas son correctas</label>
+      </div>
+
+      <button type="submit" class="quiz-btn">Ver resultados</button>
+    </form>
+    <div id="resultadoQuiz" class="resultado-quiz"></div>
   </section>
 
-  <div class="fixed-buttons">
-    <button id="music-button" class="music-button">🎶</button>
-    <button id="surpriseButton" class="surprise-button">💌</button>
-  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // =========================
+      // EFECTOS VISUALES DE FONDO
+      // =========================
+      
+      // Crear corazones flotantes
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = ['💖', '💕', '❤️', '💗', '💘'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 2 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        document.getElementById('hearts-container').appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 6000);
+      }
 
-  <div class="animation-area">
-    </div>
+      // Crear partículas brillantes
+      function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        document.getElementById('sparkles').appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 3000);
+      }
 
-  <script src="IVI.js"></script>
+      // Generar efectos continuamente
+      setInterval(createHeart, 800);
+      setInterval(createSparkle, 300);
+
+      // =========================
+// CARRUSEL DE FOTOS
+// =========================
+const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slides img');
+let counter = 0;
+
+function updateSlide() {
+  const slideWidth = images[0].clientWidth;
+  slides.style.transform = `translateX(-${counter * slideWidth}px)`;
+
+  images.forEach((img, index) => {
+    if (index === counter) {
+      img.style.transform = 'scale(1.05)';
+      img.style.filter = 'brightness(1.2) saturate(1.3)';
+    } else {
+      img.style.transform = 'scale(0.95)';
+      img.style.filter = 'brightness(1) saturate(1.1)';
+    }
+  });
+}
+
+// Swipe táctil
+let startX = 0;
+slides.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+slides.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX > endX + 50) {
+    // Si se desliza a la izquierda, avanza
+    counter = (counter + 1) % images.length;
+    updateSlide();
+  }
+  if (startX < endX - 50) {
+    // Si se desliza a la derecha, retrocede
+    counter = (counter - 1 + images.length) % images.length;
+    updateSlide();
+  }
+});
+
+window.addEventListener('resize', updateSlide);
+updateSlide();
+
+// Auto-play del carrusel
+setInterval(() => {
+  counter = (counter + 1) % images.length;
+  updateSlide();
+}, 5000);
+      // =========================
+      // REPRODUCCIÓN DE MÚSICA
+      // =========================
+      const allAudioPlayers = document.querySelectorAll('.song-audio');
+      allAudioPlayers.forEach(audioPlayer => {
+        audioPlayer.addEventListener('play', () => {
+          allAudioPlayers.forEach(otherPlayer => {
+            if (otherPlayer !== audioPlayer) {
+              otherPlayer.pause();
+            }
+          });
+        });
+      });
+
+      // =========================
+      // CONTADOR CUMPLEMES
+      // =========================
+      const timerElement = document.getElementById("timer");
+
+      function updateCountdown() {
+        const now = new Date();
+        let target = new Date(now.getFullYear(), now.getMonth(), 16);
+
+        if (now.getDate() >= 16) {
+          target = new Date(now.getFullYear(), now.getMonth() + 1, 16);
+        }
+        
+        const diff = target - now;
+
+        if (diff < 0) {
+          timerElement.textContent = "¡Feliz Cumplemes! ❤️";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // =========================
+      // QUIZ MULTIPLE CHOICE
+      // =========================
+      document.getElementById("quizForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        let score = 0;
+
+        const correctAnswers = {
+          q1: "d",
+          q2: "b",
+          q3: "c",
+          q4: "b",
+          q6: "c",
+          q7: "d",
+          q8: "a",
+          q9: "e",
+          q10: "f",
+        };
+
+        // Reinicia el estilo de todas las preguntas
+        document.querySelectorAll('.pregunta').forEach(pregunta => {
+          pregunta.classList.remove('incorrecta');
+        });
+
+        const formData = new FormData(this);
+        const questions = Object.keys(correctAnswers);
+
+        questions.forEach(questionName => {
+          const userAnswer = formData.get(questionName);
+          const correctAnswer = correctAnswers[questionName];
+
+          if (userAnswer === correctAnswer) {
+            score++;
+          } else {
+            const preguntaElement = document.querySelector(`[name="${questionName}"]`).closest('.pregunta');
+            if (preguntaElement) {
+              preguntaElement.classList.add('incorrecta');
+            }
+          }
+        });
+
+        let mensaje = "";
+        const totalQuestions = questions.length;
+        const porcentaje = (score / totalQuestions) * 100;
+
+        if (porcentaje >= 100) {
+          mensaje = "¡NAAA! 💕 Sabés TODO. ¡Nuestro amor es perfecto! 😍";
+        } else if (porcentaje >= 75) {
+          mensaje = "¡Casi perfecto! ✨ que linda que sos amorcito🥰";
+        } else if (porcentaje >= 50) {
+          mensaje = "mmmm maso maso pero algo te acordas❤️";
+        } else {
+          mensaje = "Pero Chanchita! no le pegaste a nada, sho zabia no me amaz 💑";
+        }
+
+        document.getElementById("resultadoQuiz").innerHTML = `
+          <h3>Resultado: ${score} de ${totalQuestions} respuestas correctas</h3>
+          <p>${mensaje}</p>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>

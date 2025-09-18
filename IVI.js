@@ -1,192 +1,154 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const animationArea = document.querySelector('.animation-area');
-  const starEmojis = ["⭐", "🌟", "💫", "✨"];
-  const heartEmojis = ["❤️", "💖", "💞"];
-  const flowerEmojis = ["🌸", "🌹", "🌼"];
-  const allEmojis = [...starEmojis, ...heartEmojis, ...flowerEmojis];
-
-  for (let i = 0; i < 70; i++) {
-    const emojiSpan = document.createElement('span');
-    emojiSpan.textContent = allEmojis[Math.floor(Math.random() * allEmojis.length)];
-    emojiSpan.style.left = `${Math.random() * 100}%`;
-    emojiSpan.style.top = `${Math.random() * 100}%`;
-    emojiSpan.style.animationDuration = `${Math.random() * 4 + 5}s`;
-    emojiSpan.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
-    animationArea.appendChild(emojiSpan);
-  }
-
-  setInterval(() => {
-    const randomEmoji = allEmojis[Math.floor(Math.random() * allEmojis.length)];
-    const duration = Math.random() * 3 + 4;
-    const left = Math.random() * 100;
-    const size = Math.random() * 1 + 1;
-
-    const element = document.createElement('span');
-    element.textContent = randomEmoji;
-    element.style.left = `${left}%`;
-    element.style.fontSize = `${size}rem`;
-    element.style.animationDuration = `${duration}s`;
-    animationArea.appendChild(element);
-    setTimeout(() => animationArea.removeChild(element), duration * 1000);
-  }, 600);
-
-  document.getElementById("surpriseButton").addEventListener("click", () => {
-    const messages = [
-      "te amo ✨",
-      "sos mi persona favorita",
-      "Mi amor por vos crece cada día ❤️",
-      "Gracias por existir en mi mundo 🌍",
-    ];
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    alert(randomMessage);
-  });
-
-  document.getElementById("music-button").addEventListener("click", () => {
-    const music = document.getElementById("background-music");
-    music.play();
-    document.getElementById("music-button").style.display = "none";
-  });
-
-  // **CARRUSEL CON DESLIZAMIENTO TÁCTIL**
-  const carouselContainer = document.querySelector('.carousel-container');
+  // =========================
+  // CARRUSEL DE FOTOS
+  // =========================
   const slides = document.querySelector('.slides');
+  const images = document.querySelectorAll('.slides img');
   const prevButton = document.querySelector('.prev');
   const nextButton = document.querySelector('.next');
-  const images = document.querySelectorAll('.slides img');
   let counter = 0;
-  let slideWidth;
-  let touchStartX = 0;
-  let touchEndX = 0;
 
-  function updateSlideWidth() {
-    slideWidth = images[0].clientWidth;
+  function updateSlide() {
+    const slideWidth = images[0].clientWidth;
     slides.style.transform = `translateX(-${counter * slideWidth}px)`;
-  }
+    slides.style.transition = 'transform 0.6s ease-in-out';
 
-  window.addEventListener('resize', updateSlideWidth);
-  updateSlideWidth();
-
-  function goToSlide(slideIndex) {
-    slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-    counter = slideIndex;
+    images.forEach((img, index) => {
+      if (index === counter) {
+        img.style.transform = 'scale(1.05)';
+        img.style.boxShadow = '0 8px 20px rgba(255,110,196,0.5)';
+      } else {
+        img.style.transform = 'scale(0.95)';
+        img.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+      }
+    });
   }
 
   nextButton.addEventListener('click', () => {
-    counter++;
-    if (counter >= images.length) {
-      counter = 0;
-    }
-    goToSlide(counter);
+    counter = (counter + 1) % images.length;
+    updateSlide();
   });
 
   prevButton.addEventListener('click', () => {
-    counter--;
-    if (counter < 0) {
-      counter = images.length - 1;
-    }
-    goToSlide(counter);
+    counter = (counter - 1 + images.length) % images.length;
+    updateSlide();
   });
 
-  // Eventos táctiles
-  slides.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
+  // Swipe táctil
+  let startX = 0;
+  slides.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  slides.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX > endX + 50) nextButton.click();
+    if (startX < endX - 50) prevButton.click();
   });
 
-  slides.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipe();
+  window.addEventListener('resize', updateSlide);
+  updateSlide();
+
+  // =========================
+  // REPRODUCCIÓN DE MÚSICA
+  // =========================
+  const allAudioPlayers = document.querySelectorAll('.song-audio');
+  allAudioPlayers.forEach(audioPlayer => {
+    audioPlayer.addEventListener('play', () => {
+      allAudioPlayers.forEach(otherPlayer => {
+        if (otherPlayer !== audioPlayer) {
+          otherPlayer.pause();
+        }
+      });
+    });
   });
 
-  function handleSwipe() {
-    const swipeThreshold = 50; // Umbral para considerar un deslizamiento
-
-    if (touchStartX - touchEndX > swipeThreshold) {
-      // Deslizamiento hacia la izquierda (ir a la siguiente imagen)
-      nextButton.click();
-    } else if (touchEndX - touchStartX > swipeThreshold) {
-      // Deslizamiento hacia la derecha (ir a la imagen anterior)
-      prevButton.click();
-    }
-    touchStartX = 0;
-    touchEndX = 0;
-  }
-
-  goToSlide(0);
-
-  // CONTADOR DE CUMPLEMES
+  // =========================
+  // CONTADOR CUMPLEMES
+  // =========================
   const timerElement = document.getElementById("timer");
 
   function updateCountdown() {
     const now = new Date();
-    let target = new Date(now.getFullYear(), now.getMonth(), 25);
+    let target = new Date(now.getFullYear(), now.getMonth(), 16);
 
-    if (now.getDate() > 25) {
-      target.setMonth(now.getMonth() + 1);
+    if (now.getDate() >= 16) {
+      target = new Date(now.getFullYear(), now.getMonth() + 1, 16);
     }
-
+    
     const diff = target - now;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    if (diff < 0) {
+      timerElement.textContent = "¡Feliz Cumplemes! ❤️";
+      return;
+    }
 
-    timerElement.textContent = `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {
-        "value": 100,
-        "density": {
-          "enable": true,
-          "value_area": 1000
-        }
-      },
-      "color": {
-        "value": ["#ff6ec4", "#ff4f81", "#ff7851", "#ffd24d", "#ae7eb2"]
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": { "width": 0, "color": "#000000" }
-      },
-      "opacity": {
-        "value": 0.7,
-        "random": true,
-      },
-      "size": {
-        "value": 6,
-        "random": true,
-      },
-      "move": {
-        "enable": true,
-        "speed": 4,
-        "direction": "none",
-        "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "events": {
-        "onhover": { "enable": true, "mode": "bubble" },
-        "onclick": { "enable": true, "mode": "repulse" }
-      },
-      "modes": {
-        "bubble": {
-          "distance": 250,
-          "size": 8,
-          "duration": 2,
-          "opacity": 1,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 100,
-          "duration": 0.4
+  // =========================
+  // QUIZ MULTIPLE CHOICE
+  // =========================
+  document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    let score = 0;
+
+    const correctAnswers = {
+      q1: "d",
+      q2: "b",
+      q3: "c",
+      q4: "b",
+      q6: "c",
+      q7: "d",
+      q8: "a",
+      q9: "e",
+      q10: "f",
+    };
+
+    // Reinicia el estilo de todas las preguntas
+    document.querySelectorAll('.pregunta').forEach(pregunta => {
+      pregunta.classList.remove('incorrecta');
+    });
+
+    const formData = new FormData(this);
+    const questions = Object.keys(correctAnswers);
+
+    questions.forEach(questionName => {
+      const userAnswer = formData.get(questionName);
+      const correctAnswer = correctAnswers[questionName];
+
+      if (userAnswer === correctAnswer) {
+        score++;
+      } else {
+        const preguntaElement = document.querySelector(`[name="${questionName}"]`).closest('.pregunta');
+        if (preguntaElement) {
+          preguntaElement.classList.add('incorrecta');
         }
       }
-    },
-    "retina_detect": true
+    });
+
+    let mensaje = "";
+    const totalQuestions = questions.length;
+    const porcentaje = (score / totalQuestions) * 100;
+
+    if (porcentaje >= 100) {
+      mensaje = "¡NAAA! 💕 Sabés TODO. ¡Nuestro amor es perfecto! 😍";
+    } else if (porcentaje >= 75) {
+      mensaje = "¡Casi perfecto! ✨ que linda que sos amorcito🥰";
+    } else if (porcentaje >= 50) {
+      mensaje = "mmmm maso maso pero algo te acordas❤️";
+    } else {
+      mensaje = "Pero Chanchita! no le pegaste a nada, sho zabia no me amaz 💑";
+    }
+
+    document.getElementById("resultadoQuiz").innerHTML = `
+      <h3>Resultado: ${score} de ${totalQuestions} respuestas correctas</h3>
+      <p>${mensaje}</p>
+    `;
   });
 });

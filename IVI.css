@@ -9,220 +9,240 @@ body {
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-  padding-bottom: 80px; /* Espacio para los botones fijos */
+  padding-bottom: 80px;
 }
 
+/* Títulos */
 h2 {
-  font-size: 1.8em; /* Reducir un poco el tamaño del título */
-  margin: 20px 0 15px; /* Reducir márgenes */
+  font-size: 2em;
+  margin: 25px 0 15px;
   color: #fff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
+/* Dedicatorias */
 .dedicatorias {
-  width: 95%; /* Ocupar más ancho en pantallas pequeñas */
-  max-width: 400px; /* Reducir el ancho máximo */
-  margin: 20px auto; /* Reducir márgenes */
-  padding: 15px; /* Reducir padding */
-  background: rgba(255, 255, 255, 0.15); /* Ligeramente más opaco */
-  border-radius: 10px; /* Reducir radio del borde */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reducir sombra */
-}
-
-.dedicatorias h2 {
-  font-size: 1.5em; /* Reducir tamaño del título de la sección */
-  margin-top: 0;
-  color: #fff;
+  width: 95%;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 15px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
 .carta {
-  background: rgba(255, 255, 255, 0.25); /* Ligeramente más opaco */
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
-  border-radius: 8px; /* Reducir radio del borde */
-  padding: 10px; /* Reducir padding */
-  margin-bottom: 10px; /* Reducir margen */
-  font-size: 0.9em; /* Reducir tamaño de la fuente */
-  line-height: 1.4; /* Reducir espaciado entre líneas */
-  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+  border-radius: 12px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  font-size: 1em;
+  line-height: 1.5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
 }
 
+.carta:hover {
+  transform: scale(1.02);
+}
+
+/* Carrusel mejorado */
 .carrusel {
-  width: 95%; /* Ocupar más ancho */
-  max-width: 350px; /* Reducir ancho máximo */
-  margin: 20px auto; /* Reducir márgenes */
+  width: 95%;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 25px;
   overflow: hidden;
-  border-radius: 10px; /* Reducir radio del borde */
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reducir sombra */
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .carousel-container {
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .slides {
   display: flex;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .slides img {
   width: 100%;
-  height: auto;
+  height: auto; /* Cambiado de '400px' a 'auto' */
   flex-shrink: 0;
-  object-fit: contain; /* Mantener */
-  border-radius: 10px; /* Reducir radio del borde */
+  object-fit: contain; /* Cambiado de 'cover' a 'contain' */
+  filter: brightness(1.1) saturate(1.2);
+  transition: all 0.3s ease;
 }
 
 .carrusel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5); /* Ligeramente más transparente */
-  color: #fff;
-  border: none;
-  padding: 8px 12px; /* Reducir padding */
-  font-size: 1.2em; /* Reducir tamaño de la fuente */
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 5px; /* Reducir radio del borde */
+  /* Quita o comenta este bloque para eliminar las flechas visualmente */
+  display: none;
 }
 
-.carrusel .prev {
-  left: 5px; /* Ajustar posición */
-}
-
-.carrusel .next {
-  right: 5px; /* Ajustar posición */
-}
-
+/* Cumplemes */
 .cumplemes {
-  width: 95%; /* Ocupar más ancho */
-  max-width: 300px; /* Reducir ancho máximo */
-  margin: 30px auto; /* Reducir márgenes */
-  padding: 20px; /* Reducir padding */
-  background: linear-gradient(135deg, #fdd835, #ffeb3b, #fdd835);
-  border-radius: 10px; /* Reducir radio del borde */
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reducir sombra */
-  color: #333;
+  width: 95%;
+  max-width: 350px;
+  margin: 35px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #ff6ec4, #ff4f81);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  animation: pulse 3s infinite alternate;
 }
 
 .cumplemes h2 {
-  font-size: 1.6em; /* Reducir tamaño del título */
+  font-size: 1.8em;
   margin-top: 0;
-  color: #333;
-  text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.5); /* Reducir sombra */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 #timer.timer-box {
-  font-size: 2em; /* Reducir tamaño del contador */
+  font-size: 2.2em;
   font-weight: bold;
-  padding: 10px 15px; /* Reducir padding */
+  padding: 12px 18px;
   background: #fff;
-  color: #9b4d98;
-  border-radius: 8px; /* Reducir radio del borde */
-  margin-bottom: 10px; /* Reducir margen */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reducir sombra */
+  color: #ff4f81;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
 }
 
 .cumplemes p.mensaje-final {
-  font-size: 1em; /* Reducir tamaño de la fuente */
+  font-size: 1.1em;
   font-weight: bold;
-  color: #555;
 }
 
-.fixed-buttons {
-  position: fixed;
-  bottom: 10px; /* Reducir distancia del borde inferior */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px; /* Reducir espacio entre botones */
-  z-index: 100;
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.02); }
 }
 
-.music-button, .surprise-button {
-  background-color: #9b4d98;
-  color: white;
-  padding: 10px 20px; /* Reducir padding */
-  border: none;
-  border-radius: 20px; /* Reducir radio del borde */
-  font-size: 0.9em; /* Reducir tamaño de la fuente */
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Reducir sombra */
-  transition: transform 0.2s ease-in-out;
+/* Canciones */
+.canciones {
+  margin: 40px auto;
+  padding: 25px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  width: 95%;
+  max-width: 900px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.music-button:hover, .surprise-button:hover {
-  transform: translateX(-50%) scale(1.02); /* Reducir escala al hacer hover */
+.canciones h2 {
+  margin-bottom: 25px;
+  font-size: 2em;
+  color: #ff6ec4;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
-#particles-js {
-  position: fixed;
+.canciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.cancion-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cancion-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255,110,196,0.5);
+}
+
+.cancion-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.3em;
+  color: #ffb6e0;
+}
+
+.cancion-card audio {
   width: 100%;
-  height: 100%;
-  z-index: -2;
-  top: 0;
-  left: 0;
+  outline: none;
+  border-radius: 10px;
 }
 
-.animation-area {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
+/* Juegos */
+.juegos {
+  width: 95%;
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  text-align: left;
 }
 
-.animation-area span {
-  position: absolute;
-  animation: float 5s infinite linear, color-change 3s infinite alternate;
-  font-size: 1.5rem; /* Reducir tamaño de los emojis */
-  opacity: 0.7; /* Ligeramente más transparente */
+.juegos h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffb6e0;
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh) scale(0.5) rotate(0deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(50vh) scale(1.1) rotate(180deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(-20vh) scale(0.5) rotate(360deg);
-    opacity: 0.3;
-  }
+.pregunta {
+  margin-bottom: 18px;
+  padding: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  transition: background 0.3s ease;
 }
 
-@keyframes color-change {
-  0% { color: #ff6ec4; }
-  50% { color: #ff4f81; }
-  100% { color: #ff7851; }
+.pregunta.incorrecta {
+  background: rgba(255, 0, 0, 0.25);
+  animation: shake 0.5s;
 }
 
-/* Ajustes específicos para pantallas muy pequeñas (ej., 320px de ancho) */
-@media (max-width: 320px) {
-  h2 {
-    font-size: 1.6em;
-  }
+.quiz-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  background: #ff6ec4;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  .dedicatorias {
-    max-width: 95%;
-  }
+.quiz-btn:hover {
+  background: #ff4f81;
+}
 
-  .carrusel {
-    max-width: 95%;
-  }
+.resultado-quiz {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2em;
+  animation: fadeIn 1s ease;
+}
 
-  #timer.timer-box {
-    font-size: 1.8em;
-  }
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
-  .music-button, .surprise-button {
-    padding: 8px 16px;
-    font-size: 0.8em;
-    border-radius: 15px;
-  }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
